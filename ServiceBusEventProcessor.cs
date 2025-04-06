@@ -29,7 +29,8 @@ namespace BgWorkerFA
             ProcessedEventIds.Add(eventMessage.EventId);
 
             var apiUrl = "https://eventprocessor.azure-api.net/api/api/events/process";
-
+            var subscriptionKey= "9ed99a8f65e44641897951ccb0aeb4e3";
+            HttpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
             var response = await HttpClient.PostAsJsonAsync(apiUrl, eventMessage);
 
             if (response.IsSuccessStatusCode)
